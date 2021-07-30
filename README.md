@@ -5,6 +5,11 @@ introduced in the 2021 paper by William Rudman, Nate Gillman, Taylor Rayne, and
 Carsten Eickhoff. IsoScore is a tool which measures how uniformly a point cloud 
 utilizes the Euclidian space that it sits inside of. See the original paper for more information.
 
+### How to install
+
+```
+pip install IsoScore
+```
 
 ### How to use
 
