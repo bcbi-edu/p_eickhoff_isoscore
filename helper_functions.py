@@ -53,12 +53,14 @@ def sample_gaussian(num_points, dim, mean, cov, uniform_mean=True, uniform_cov=T
     return samples.T 	 
 
 def pca_normalization(points):
+    """Projects points onto the directions of maximum variance.""" 
     points = np.transpose(points)	
     pca = PCA(n_components=len(np.transpose(points)))
     points = pca.fit_transform(points)	
     return np.transpose(points)
     
-def gauss_line(dim, num_gauss, num_line):
+def skewered_meatball(dim, num_gauss, num_line):
+    """Intersect points sampled from a multivariate Gaussian and a line in n dimensional space.""" 
     gauss = sample_gaussian(num_points=num_gauss, dim=dim, cov=1, mean=0)
     cov = np.full((dim,dim),1)
     line = sample_gaussian(num_points=num_line, dim=dim, mean=0, cov=cov, uniform_cov=False)

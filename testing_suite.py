@@ -29,7 +29,7 @@ from IsoScore import *
 #################################################################
 
 def gaussian_tests(score): 
-    
+    """Runs score against a variety of tests using points sampled from a multivariate Gaussian distribution """    
     print("GAUSSIAN TESTS FOR", score.__name__)
     print("----------------------------------------------------------------------------")	
      
@@ -72,6 +72,7 @@ def gaussian_tests(score):
     return None 
 
 def hyperplane_tests(score):
+    """Runs score against a variety of tests crafted using hyperplanes """ 
     print("LINE AND HYPERPLANE TESTS FOR", score.__name__)
     print("----------------------------------------------------------------------------")	
     # TEST 8: perfectly anisotropic space; points live along a line 
@@ -125,6 +126,16 @@ def hyperplane_tests(score):
     print("----------------------------------------------------------------------------")	
     return None 
 
+#################################################################
+#################################################################
+###########   Testing the 6 Axioms 
+#################################################################
+#################################################################
+#################################################################
+
+# Examine visuals.py to see code for the rotation invariacne test. 
+
+
 def dim_used_test(dim,score):
     print("------------------------------------------------------------------------------------------")
     print("INCREASING DIMENSIONS USED TEST FOR",score.__name__)
@@ -140,6 +151,17 @@ def dim_used_test(dim,score):
     y.append(result)
     return np.array(y)
 
+def high_dim_test(score, max_dim=10):
+    print("------------------------------------------------------------------------------------------")
+    print("INCREASING DIMENSIONS TEST FOR",score.__name__)
+    print("------------------------------------------------------------------------------------------") 
+    y = []
+    for d in range(2, max_dim):
+        points = sample_gaussian(num_points=100000, dim=d, mean=0, cov=1)
+        y.append(score(points))
+    return np.array(y)
+
+
 def max_var_test(score, dim, cov_range, mean=0):
     print("------------------------------------------------------------------------------------------")
     print("INCREASING MAX VARIANCE TEST FOR",score.__name__)
@@ -154,45 +176,44 @@ def max_var_test(score, dim, cov_range, mean=0):
     print("Score of {} when max variance is {}".format(result,x))
     return score_scale
 
-def increasing_dimensions_used(n, the_score):
-    print("----------------------------------------------------------------------------")
-    cov = np.full((n,n),0)
-    for i in range(n):
-        cov[i][i] = 1
-        points = sample_gaussian(num_points=100000, dim=n, cov=cov, mean=0, uniform_cov=False)
-        score = the_score(points)
-        print("{} for points sampled using I_{}^{}: {}".format(the_score.__name__,n,i+1,score))
-    print("----------------------------------------------------------------------------")
-    return None
 
-def half_of_dimensions_used_test(max_dim, score):
+def meatball_test(score, dim, gauss_range):
+    print("------------------------------------------------------------------------------------------")
+    print("SKEWERED MEATBALL TEST FOR",score.__name__)
+    print("------------------------------------------------------------------------------------------") 
+    x = []
+    y = []
+    for num_points in range(0, gauss_range, 50):
+        points = skewered_meatball(dim, num_gauss=num_points, num_line=1000)
+        x.append(num_points/1000)
+        y.append(score(points))
+    return x, np.array(y)
 
-    print("----------------------------------------------------------------------------")
-    print("Computing {} when half of available dimensions are utilized: ".format(score.__name__))
-    print("----------------------------------------------------------------------------")
-    for dim in range(2, max_dim+1, 2):
-        cov = np.zeros((dim,dim))
-        for i in range(dim//2):
-            cov[i][i] = 1
-        #points = sample_gaussian(num_points=10000, dim=dim, cov=cov, mean=0, uniform_cov=False)
-        #the_score = score(points)
-        the_score = iso_score_of_cov_matrix(cov)
-        print("I_{}^{} -> {}, dims utilized = {}".format(dim,dim//2,the_score,map_Iso_Score_to_k(the_score,dim)))
-    
-    return None
+def scalar_cov_test(dim, cov_range, score):
+    print("------------------------------------------------------------------------------------------")
+    print("SCALAR COVARIANCE TEST FOR",score.__name__)
+    print("------------------------------------------------------------------------------------------")  
+    x = []
+    y = []
+    for cov in np.linspace(1,cov_range,cov_range*3):
+        sample = sample_gaussian(num_points=100000, dim=dim, cov=cov, mean=3)
+        x.append(cov)
+        y.append(score(sample))
+    return np.array(x), np.array(y)
 
-def only_first_dimension_used_test(max_dim, score):
-    print("----------------------------------------------------------------------------")
-    print("Computing {} when only first dimensions is utilized: ".format(score.__name__))
-    print("----------------------------------------------------------------------------")
-    for dim in range(2, max_dim+1):
-        cov = np.zeros((dim,dim))
-        cov[0][0] = 1
-        points = sample_gaussian(num_points=10000, dim=dim, cov=cov, mean=0, uniform_cov=False)
-        the_score = score(points)
-        print("I_{}^1: {}, dims utilized: {}".format(dim,the_score,map_Iso_Score_to_k(the_score,dim)))
-    
-    return None 
+def scalar_mean_test(score, D=5, M=20, N=100000):
+    print("------------------------------------------------------------------------------------------")
+    print("SCALAR MEAN TEST FOR",score.__name__)
+    print("------------------------------------------------------------------------------------------")   
+    x = []
+    y = []
+    for i in np.linspace(0,M,M*2):
+        m = np.full((D), i)
+        s = np.diag(np.diag(np.full((D,D),1)))
+        samples = multivariate_normal(mean=m, cov=s, size=N).T
+        x.append(i)
+        y.append(score(samples))
+    return np.array(x), np.array(y)
 
 #################################################################
 #################################################################
@@ -205,7 +226,7 @@ def only_first_dimension_used_test(max_dim, score):
 
 
 def main():
-
+"""Call any tests you want to run on IsoScore, existing scores or your own proposed isotropy score."""
     
 
 
