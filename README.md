@@ -43,6 +43,9 @@ the_score = IsoScore.IsoScore(point_cloud_ball)
 print(f"IsoScore for 100 points sampled from this ball in R^3 is {the_score}.")
 ```
 
+### Visuals 
+The run tests and recreate figures, consult ```visuals.ipynb ```.  
+
 ### Citing
 
 If you would like to cite this work, please refer to:
