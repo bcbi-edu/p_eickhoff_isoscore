@@ -44,8 +44,9 @@ print(f"IsoScore for 100 points sampled from this ball in R^3 is {the_score}.")
 ```
 
 ### Isotropy in Contextualized Embeddings
-We obtain contextualized word embeddings for the WikiText-2 corpus using: https://github.com/TideDancer/IsotropyContxt
-The embedding_results folder contains isotropy scores for BERT, DistilBERT, GPT and GPT-2. 
+We obtain contextualized word embeddings for the WikiText-2 corpus using: https://github.com/TideDancer/IsotropyContxt.
+
+The embedding_results directory contains isotropy scores for BERT, DistilBERT, GPT and GPT-2. 
 
 ### Visuals 
 Please consult ```visuals.ipynb ``` to quickly run tests and recreate figures.  
