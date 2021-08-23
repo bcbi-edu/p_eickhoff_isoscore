@@ -1,11 +1,13 @@
-# IsoScore
+# IsoScore: Measuring the Uniformity of Vector Space Utilization
+ *by William Rudman, Nate Gillman, Taylor Rayne, and Carsten Eickhoff*
 
-This contains the Python3 implementation of IsoScore, which was originally
-introduced in the 2021 paper by William Rudman, Nate Gillman, Taylor Rayne, and 
-Carsten Eickhoff. IsoScore is a tool which measures how uniformly a point cloud 
-utilizes the Euclidian space that it sits inside of. See the original paper for more information.
+IsoScore is a tool that measures how uniformly a point cloud utilizes the Euclidian space that it sits inside of. 
+See the original paper ([https://arxiv.org/abs/2108.07344](https://arxiv.org/abs/2108.07344)) for more information. 
+This repository contains the Python3 implementation of IsoScore.
 
 ### How to install
+
+The only dependencies are `numpy` and `sklearn`.
 
 ```
 pip install IsoScore
@@ -13,25 +15,51 @@ pip install IsoScore
 
 ### How to use
 
-The only dependencies are `numpy` and `sklearn`.
+If you want to compute the IsoScore for a point cloud <img src="https://render.githubusercontent.com/render/math?math=X">  that sits inside <img src="https://render.githubusercontent.com/render/math?math=\mathbb R^n">, then <img src="https://render.githubusercontent.com/render/math?math=X"> must be a `numpy` array of shape <img src="https://render.githubusercontent.com/render/math?math=(n,m)">, where <img src="https://render.githubusercontent.com/render/math?math=X"> contains <img src="https://render.githubusercontent.com/render/math?math=m"> points.
+For example:
+
 
 ```python3
 import numpy as np
 from IsoScore import IsoScore
 
-# Computing the IsoScore for a fuzzy ball in R^3
-point_cloud_isotropic = np.random.normal(size=(3,100))
-the_score = IsoScore.IsoScore(point_cloud_isotropic)
-print(f"The IsoScore for 100 points sampled from this Gaussian ball in R^3 is {the_score},")
+random_array_1 = np.random.normal(size=100)
+random_array_2 = np.random.normal(size=100)
+random_array_3 = np.random.normal(size=100)
 
-# Computing the IsoScore for points sampled from the line t \mapsto (t, 2t, 3t) in R^3
-random_array = np.random.normal(size=100)
-point_cloud_anisotropic = np.array([random_array, 2*random_array, 3*random_array])
-the_score = IsoScore.IsoScore(point_cloud_anisotropic)
-print(f"and the IsoScore for 100 points sampled from this line in R^3 is {the_score}.")
+# Computing the IsoScore for points sampled from a line (dim=1) in R^3
+point_cloud_line = np.array([random_array_1, np.zeros(100), np.zeros(100)])
+the_score = IsoScore.IsoScore(point_cloud_line)
+print(f"IsoScore for 100 points sampled from this line in R^3 is {the_score}.")
+
+# Computing the IsoScore for points sampled from a disk (dim=2) in R^3
+point_cloud_disk = np.array([random_array_1, random_array_2, np.zeros(100)])
+the_score = IsoScore.IsoScore(point_cloud_disk)
+print(f"IsoScore for 100 points sampled from this disk in R^3 is {the_score}.")
+
+# Computing the IsoScore for points sampled from a ball (dim=3) in R^3
+point_cloud_ball = np.array([random_array_1, random_array_2, random_array_3])
+the_score = IsoScore.IsoScore(point_cloud_ball)
+print(f"IsoScore for 100 points sampled from this ball in R^3 is {the_score}.")
 ```
+
+### Citing
+
+If you would like to cite this work, please refer to:
+```bibtex
+@Article{Rudman-Gillman-Rayne-Eickhoff-IsoScore,
+    title = "IsoScore: Measuring the Uniformity of Vector Space Utilization",
+    author =    {William Rudman and
+                Nate Gillman and 
+                Taylor Rayne and 
+                Carsten Eickhoff},
+    month = aug,
+    year = "2021",
+    url = "https://arxiv.org/abs/2108.07344",
+}
+```
+
 
 ### License
 
 This project is licensed under the MIT License.
-
