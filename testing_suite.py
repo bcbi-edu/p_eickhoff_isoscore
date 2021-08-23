@@ -16,6 +16,7 @@ from numpy.random import multivariate_normal
 from scipy.spatial import distance_matrix
 import time 
 from sklearn import datasets
+from numpy.random import multivariate_normal
 from skdim.id import *
 from helper_functions import *
 from existing_scores import *
