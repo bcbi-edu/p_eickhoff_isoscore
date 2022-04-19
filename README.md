@@ -1,8 +1,8 @@
-# IsoScore: Measuring the Uniformity of Vector Space Utilization
+# IsoScore: Measuring the Uniformity of Embedding Space Utilization
  *by William Rudman, Nate Gillman, Taylor Rayne, and Carsten Eickhoff*
 
 IsoScore is a tool that measures how uniformly a point cloud utilizes the Euclidian space that it sits inside of. 
-See the original paper ([https://arxiv.org/abs/2108.07344](https://arxiv.org/abs/2108.07344)) for more information. 
+See the (original paper (https://arxiv.org/abs/2108.07344)) appearing in the Findings of ACL 2022 for more information. 
 This repository contains the Python3 implementation of IsoScore.
 
 ### How to install
