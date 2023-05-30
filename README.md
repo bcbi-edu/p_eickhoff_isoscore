@@ -8,6 +8,7 @@ pip install IsoScore
 ## IsoScore: Measuring the Uniformity of Embedding Space Utilization 
 The first paper proposes IsoScore: a novel tool that quantifies the degree to which a point cloud uniformly utilizes the ambient vector space. Using rigorously designed tests, we demonstrate that IsoScore is the only tool available in the literature that accurately measures how uniformly distributed variance is across dimensions in vector space. IsoScore was published in the Findings of the ACL 2022 (https://aclanthology.org/2022.findings-acl.262/. If you would like to cite this work, please refer to:
 
+```bibtex
 @inproceedings{rudman-etal-2022-isoscore,
     title = "{I}so{S}core: Measuring the Uniformity of Embedding Space Utilization",
     author = "Rudman, William  and
@@ -23,6 +24,7 @@ The first paper proposes IsoScore: a novel tool that quantifies the degree to wh
     doi = "10.18653/v1/2022.findings-acl.262",
     pages = "3325--3339",
     }
+```
 
 ## Stable Anisotropic Regularization
 In this paper, we propose I-STAR: IsoScore⋆-based STable Anisotropic Regularization, a novel regularization method that can be used to increase or decrease levels of isotropy in embedding space during training. I-STAR uses IsoScore⋆, an improved version of IsoScore that is both differentiable and stable on mini-batch computations. In contrast to several previous works, we find that decreasing isotropy in LLMs tends to improve performance on a variety of fine-tuning tasks. I-STAR is currently under anonymous review, but the pre-print is available on arXiv (). 
