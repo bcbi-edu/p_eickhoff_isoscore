@@ -3,7 +3,10 @@ This repository contains code for two related projects: IsoScore and I-STAR. In 
 
 ```
 pip install IsoScore
+from IsoScore.IsoScore import *
 ```
+
+Our pip installation contains the necessary functions to measure isotropy using IsoScore, IsoScore_star, and has an istar module that can be used to compute I-STAR loss.
 
 ## IsoScore: Measuring the Uniformity of Embedding Space Utilization 
 The first paper proposes IsoScore: a novel tool that quantifies the degree to which a point cloud uniformly utilizes the ambient vector space. Using rigorously designed tests, we demonstrate that IsoScore is the only tool available in the literature that accurately measures how uniformly distributed variance is across dimensions in vector space. IsoScore was published in the Findings of the ACL 2022 (https://aclanthology.org/2022.findings-acl.262/. If you would like to cite this work, please refer to:
