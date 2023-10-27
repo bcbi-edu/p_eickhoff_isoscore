@@ -56,15 +56,20 @@ Please consult ```visuals.ipynb ``` to quickly run tests and recreate figures.
 
 If you would like to cite this work, please refer to:
 ```bibtex
-@Article{Rudman-Gillman-Rayne-Eickhoff-IsoScore,
-    title = "IsoScore: Measuring the Uniformity of Vector Space Utilization",
-    author =    {William Rudman and
-                Nate Gillman and 
-                Taylor Rayne and 
-                Carsten Eickhoff},
-    month = aug,
-    year = "2021",
-    url = "https://arxiv.org/abs/2108.07344",
+@inproceedings{rudman-etal-2022-isoscore,
+    title = "{I}so{S}core: Measuring the Uniformity of Embedding Space Utilization",
+    author = "Rudman, William  and
+      Gillman, Nate  and
+      Rayne, Taylor  and
+      Eickhoff, Carsten",
+    booktitle = "Findings of the Association for Computational Linguistics: ACL 2022",
+    month = may,
+    year = "2022",
+    address = "Dublin, Ireland",
+    publisher = "Association for Computational Linguistics",
+    url = "https://aclanthology.org/2022.findings-acl.262",
+    doi = "10.18653/v1/2022.findings-acl.262",
+    pages = "3325--3339",
 }
 ```
 
