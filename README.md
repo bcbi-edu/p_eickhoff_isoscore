@@ -30,7 +30,7 @@ The first paper proposes IsoScore: a novel tool that quantifies the degree to wh
 ```
 
 ## Stable Anisotropic Regularization
-In this paper, we propose I-STAR: IsoScore⋆-based STable Anisotropic Regularization, a novel regularization method that can be used to increase or decrease levels of isotropy in embedding space during training. I-STAR uses IsoScore⋆, an improved version of IsoScore that is both differentiable and stable on mini-batch computations. In contrast to several previous works, we find that decreasing isotropy in LLMs tends to improve performance on a variety of fine-tuning tasks. I-STAR is currently under anonymous review, but the pre-print is available on arXiv (https://arxiv.org/abs/2305.19358). 
+In this paper, we propose I-STAR: IsoScore⋆-based STable Anisotropic Regularization, a novel regularization method that can be used to increase or decrease levels of isotropy in embedding space during training. I-STAR uses IsoScore⋆, an improved version of IsoScore that is both differentiable and stable on mini-batch computations. In contrast to several previous works, we find that decreasing isotropy in LLMs tends to improve performance on a variety of fine-tuning tasks. I-STAR was published at ICLR 2024 (https://arxiv.org/pdf/2305.19358). 
 
 
 ## License
