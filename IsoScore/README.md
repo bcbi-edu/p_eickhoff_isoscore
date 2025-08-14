@@ -15,7 +15,7 @@ pip install IsoScore
 
 ### How to use
 
-If you want to compute the IsoScore for a point cloud <img src="https://render.githubusercontent.com/render/math?math=X">  that sits inside <img src="https://render.githubusercontent.com/render/math?math=\mathbb R^n">, then <img src="https://render.githubusercontent.com/render/math?math=X"> must be a `numpy` array of shape <img src="https://render.githubusercontent.com/render/math?math=(n,m)">, where <img src="https://render.githubusercontent.com/render/math?math=X"> contains <img src="https://render.githubusercontent.com/render/math?math=m"> points.
+If you want to compute the IsoScore for a point cloud X that sits inside R^n, then X must be a `numpy` array of shape (n,m), where X contains m points, and the latent dimension is n.
 For example:
 
 
